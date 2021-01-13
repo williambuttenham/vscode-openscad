@@ -11,11 +11,15 @@
     },
     "categories": [
         "Programming Languages",
-        "Snippets"
+        "Snippets",
+		"Formatters"
     ],
     "keywords": [
         "openscad",
-        "scad"
+		"openscad-format",
+		"scad",
+		"OpenSCAD",
+		"format"
     ],
     "homepage": "https://github.com/Antyos/vscode-openscad/blob/master/README.md",
     "bugs": {
@@ -104,7 +108,11 @@
                     "light": "./media/icons/export-light.svg",
                     "dark": "./media/icons/export-dark.svg"
                 }
-            }
+            },
+			{
+				"command": "openscad.openscad-format",
+				"title": "Format document with openscad-format"
+			}
         ],
         "menus": {
             "editor/title": [
@@ -137,7 +145,12 @@
                     "alt": "openscad.exportWithSaveDialogue",
                     "when": "resourceLangId == scad && config.openscad.interface.showExportInContextMenus && config.openscad.interface.showCommandsInEditorTitleContextMenu",
                     "group": "navigation@1"
-                }
+                },
+				{
+					"command": "openscad.openscad-format",
+					"when": "resourceLangId == scad",
+					"group": "openscad-format@1"
+				}
             ],
             "explorer/context": [
                 {
@@ -150,7 +163,12 @@
                     "alt": "openscad.exportWithSaveDialogue",
                     "when": "resourceLangId == scad && config.openscad.interface.showExportInContextMenus && config.openscad.interface.showCommandsInExplorerContextMenu",
                     "group": "navigation@-1.1"
-                }
+                },
+				{
+					"command": "openscad.openscad-format",
+					"when": "resourceLangId == scad",
+					"group": "openscad-format@1"
+				}
             ],
             "commandPalette": [
                 {
@@ -342,7 +360,17 @@
                         "Open cheatsheet in column beside current one",
                         "Open cheatsheet in current column/group"
                     ]
-                }
+                },
+				"openscad.format.config": {
+					"type": "string",
+					"default": null,
+					"description": "Path with openscad-format config file"
+				},
+				"openscad.format.executable": {
+					"type": "string",
+					"default": "openscad-format",
+					"description": "Where is openscad-format executable location"
+				}
             }
         }
     },
